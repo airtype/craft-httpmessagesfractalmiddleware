@@ -88,7 +88,7 @@ class FractalMiddleware
             $body = new Item($response->getItem(), $transformer);
         }
 
-        if ($response->getCollection()) {
+        if (is_array($response->getCollection())) {
             $body = new Collection($response->getCollection(), $transformer);
 
             $paginator = $this->getPaginator($response);
