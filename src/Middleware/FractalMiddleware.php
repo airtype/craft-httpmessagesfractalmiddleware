@@ -118,7 +118,7 @@ class FractalMiddleware
      */
     private function getTransformer(Request $request)
     {
-        $transformer = $request->getRoute()->getMiddlewareConfig('transformer', 'fractal');
+        $transformer = $request->getRoute()->getMiddlewareVariable('transformer', 'fractal');
 
         return new $transformer;
     }
