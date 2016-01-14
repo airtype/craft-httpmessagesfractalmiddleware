@@ -3,6 +3,7 @@
 namespace HttpMessagesFractalMiddleware\Http;
 
 use HttpMessages\Http\CraftResponse as Response;
+use Craft\ElementCriteriaModel;
 
 class FractalResponse extends Response
 {
@@ -80,6 +81,32 @@ class FractalResponse extends Response
         $new = clone $this;
 
         $new->item = $item;
+
+        return $new;
+    }
+
+    /**
+     * Get Criteria
+     *
+     * @return ElementCriteriaModel Criteria
+     */
+    public function getCriteria()
+    {
+        return $this->criteria;
+    }
+
+    /**
+     * With Criteria
+     *
+     * @param ElementCriteriaModel $criteria Criteria
+     *
+     * @return RestResponse RestResponse
+     */
+    public function withCriteria(ElementCriteriaModel $criteria)
+    {
+        $new = clone $this;
+
+        $new->criteria = $criteria;
 
         return $new;
     }
