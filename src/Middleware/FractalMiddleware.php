@@ -91,8 +91,9 @@ class FractalMiddleware
         if (is_array($response->getCollection())) {
             $resource = new Collection($response->getCollection(), $transformer);
 
-            $paginator = $this->getPaginator($response);
-            $resource->setPaginator($paginator);
+            if ($paginator = $this->getPaginator($response)) {
+                $resource->setPaginator($paginator);
+            }
         }
 
         if (isset($resource)) {
@@ -155,9 +156,15 @@ class FractalMiddleware
      */
     private function getPaginator(Response $response)
     {
+        $criteria = $response->getCriteria();
+
+        if (!$criteria->limit) {
+            return null;
+        }
+
         $paginator = \Craft\craft()->config->get('paginator', 'HttpMessagesFractalMiddleware');
 
-        return new $paginator($response->getCriteria());
+        return new $paginator($criteria);
     }
 
 }
