@@ -85,23 +85,23 @@ class FractalMiddleware
         // }
 
         if ($response->getItem()) {
-            $body = new Item($response->getItem(), $transformer);
+            $resource = new Item($response->getItem(), $transformer);
         }
 
         if (is_array($response->getCollection())) {
-            $body = new Collection($response->getCollection(), $transformer);
+            $resource = new Collection($response->getCollection(), $transformer);
 
             $paginator = $this->getPaginator($response);
-            $body->setPaginator($paginator);
+            $resource->setPaginator($paginator);
         }
 
-        if (isset($body)) {
+        if (isset($resource)) {
             $serializer = $this->getSerializer($request);
             $fractal->setSerializer($serializer);
 
-            $body = $fractal->createData($body)->toArray();
+            $resource = $fractal->createData($resource)->toArray();
 
-            $json = \Craft\JsonHelper::encode($body);
+            $json = \Craft\JsonHelper::encode($resource);
 
             $response = $response->withJson($json);
         }
