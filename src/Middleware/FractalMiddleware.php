@@ -62,6 +62,20 @@ class FractalMiddleware
             $response = $response
                 ->withStatus($exception->getStatusCode(), $exception->getStatusPhrase())
                 ->withJson($json);
+        } catch(\CException $exception) {
+            $body = [
+                'message' => $exception->getMessage(),
+            ];
+
+            if (\Craft\craft()->config->get('devMode', 'HttpMessagesFractalMiddleware')) {
+                $body['trace'] = $exception->getTrace();
+            }
+
+            $json = \Craft\JsonHelper::encode($body);
+
+            $response = $response
+                ->withStatus(500)
+                ->withJson($json);
         }
 
         return $response;
