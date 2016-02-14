@@ -99,11 +99,19 @@ class FractalMiddleware
         // }
 
         if ($response->getItem()) {
-            $resource = new Item($response->getItem(), $transformer);
+            if ($transformer) {
+                $resource = new Item($response->getItem(), $transformer);
+            } else {
+                $resource = new Item($response->getItem());
+            }
         }
 
         if (is_array($response->getCollection())) {
-            $resource = new Collection($response->getCollection(), $transformer);
+            if ($transformer) {
+                $resource = new Collection($response->getCollection(), $transformer);
+            } else {
+                $resource = new Collection($response->getCollection());
+            }
 
             if ($paginator = $this->getPaginator($response)) {
                 $resource->setPaginator($paginator);
@@ -135,7 +143,7 @@ class FractalMiddleware
     {
         $transformer = $request->getRoute()->getMiddlewareVariable('transformer', 'fractal');
 
-        return new $transformer;
+        return ($transformer) ? new $transformer : null;
     }
 
     /**
