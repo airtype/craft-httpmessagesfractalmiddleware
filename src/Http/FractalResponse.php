@@ -22,6 +22,13 @@ class FractalResponse extends Response
     protected $collection;
 
     /**
+     * Criteria
+     *
+     * @var Craft\ElementCriteriaModel
+     */
+    protected $criteria;
+
+    /**
      * Constructor
      *
      * @param Response $response Response
