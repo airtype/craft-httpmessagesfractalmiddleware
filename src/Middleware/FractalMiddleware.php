@@ -178,7 +178,9 @@ class FractalMiddleware
      */
     private function getPaginator(Response $response)
     {
-        $criteria = $response->getCriteria();
+        if(!$criteria = $response->getCriteria()) {
+            return null;
+        }
 
         if (!$criteria->limit) {
             return null;
