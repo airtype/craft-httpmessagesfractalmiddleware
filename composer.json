@@ -1,5 +1,9 @@
 {
-    "name": "airtype/httpmessagesfractalmiddleware",
+    "name": "airtype/craft-httpmessagesfractalmiddleware",
+    "type": "craft-plugin",
+    "extra": {
+        "installer-name": "httpmessagesfractalmiddleware"
+    },
     "authors": [
         {
             "name": "Wes Rice",
