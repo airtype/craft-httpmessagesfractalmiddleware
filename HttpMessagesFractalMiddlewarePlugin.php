@@ -2,8 +2,6 @@
 
 namespace Craft;
 
-Craft::import('plugins.httpmessagesfractalmiddleware.vendor.autoload', true);
-
 class HttpMessagesFractalMiddlewarePlugin extends BasePlugin
 {
     /**
