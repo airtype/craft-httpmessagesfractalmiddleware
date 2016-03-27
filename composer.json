@@ -1,6 +1,5 @@
 {
     "name": "airtype/craft-httpmessagesfractalmiddleware",
-    "type": "craft-plugin",
     "authors": [
         {
             "name": "Wes Rice",
@@ -11,7 +10,7 @@
         "psr-4": {
             "HttpMessagesFractalMiddleware\\": "src/"
         },
-        "files": ["src/config.php"]
+        "files": ["config.php"]
     },
     "require": {
         "league/fractal": "^0.13.0"
