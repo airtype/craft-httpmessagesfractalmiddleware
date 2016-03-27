@@ -10,13 +10,10 @@
     "autoload": {
         "psr-4": {
             "HttpMessagesFractalMiddleware\\": "src/"
-        }
+        },
+        "files": ["src/config.php"]
     },
     "require": {
         "league/fractal": "^0.13.0"
-    },
-    "scripts": {
-        "post-install-cmd": "HttpMessagesFractalMiddleware\\Config::postInstall",
-        "post-update-cmd": "HttpMessagesFractalMiddleware\\Config::postUpdate",
     }
 }
