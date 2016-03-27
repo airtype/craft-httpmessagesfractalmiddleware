@@ -1,6 +1,8 @@
 <?php
 
-return [
+namespace Craft;
+
+$config = [
 
     /**
      * Dev Mode (boolean)
@@ -61,3 +63,7 @@ return [
     ],
 
 ];
+
+foreach ($config as $key => $value) {
+    craft()->config->set($key, $value, 'httpmessagesfractalmiddleware');
+}

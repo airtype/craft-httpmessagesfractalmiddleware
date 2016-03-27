@@ -1,9 +1,6 @@
 {
     "name": "airtype/craft-httpmessagesfractalmiddleware",
     "type": "craft-plugin",
-    "extra": {
-        "installer-name": "httpmessagesfractalmiddleware"
-    },
     "authors": [
         {
             "name": "Wes Rice",
@@ -16,7 +13,10 @@
         }
     },
     "require": {
-        "composer/installers": "~1.0",
         "league/fractal": "^0.13.0"
+    },
+    "scripts": {
+        "post-install-cmd": "HttpMessagesFractalMiddleware\\Config::postInstall",
+        "post-update-cmd": "HttpMessagesFractalMiddleware\\Config::postUpdate",
     }
 }
