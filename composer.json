@@ -10,7 +10,7 @@
         "psr-4": {
             "HttpMessagesFractalMiddleware\\": "src/"
         },
-        "files": ["config.php"]
+        "files": ["functions.php", "config.php"]
     },
     "require": {
         "league/fractal": "^0.13.0"
